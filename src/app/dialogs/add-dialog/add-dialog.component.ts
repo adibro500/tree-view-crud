@@ -12,7 +12,7 @@ export class AddDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any,
     private dataService: DataService) {
-      this.data = this.data.node;
+      // this.data = this.data.node;
       // this.data. = this.data.data;
       // this.data['id'] = this.data.node.id;
      }

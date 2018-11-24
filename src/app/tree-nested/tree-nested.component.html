@@ -12,7 +12,7 @@
           <mat-icon class="mat-icon-rtl-mirror" *ngIf="node.children.length>0">
             {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
           </mat-icon>
-        </button> <input type="text" [(ngModel)]="node.input_type +' '+node.id" name="node" />   	
+        </button> <input type="text" [(ngModel)]="node.item_type +' '+node.id" name="node" />   	
 			<!-- <mat-select placeholder="Location Type" [(ngModel)]="node.type" name="matSelect">
 				<mat-option *ngFor="let k of locationType;let i=index" [value]="k" [disabled]="node.level>i">
 					{{k}}  -->

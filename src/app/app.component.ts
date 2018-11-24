@@ -10,13 +10,12 @@ export class AppComponent {
   treeData: any[] = [
     {
       id: 0,
-      item_type: "Assets",
+      input_type: "Assets",
       level: 0,
       filename: "Location",
       parentId: null,
-      input_type: "checkbox",
       code: "checkbox",
-      Description: "aditya",
+      desc: "aditya",
       item_group: 2,
       active: 100155,
       effective_date: "12/05/1991",
@@ -28,7 +27,7 @@ export class AppComponent {
         id: 1.1,
         input_type: "checkbox",
         code: "checkbox",
-        Description: "aditya",
+        desc: "aditya",
         item_group: 2,
         active: 100155,
         effective_date: "12/05/1991"

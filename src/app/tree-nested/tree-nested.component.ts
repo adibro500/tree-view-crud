@@ -1,13 +1,13 @@
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { Component, Injectable, ViewChild, OnInit, Input } from '@angular/core';
-import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { Component, Injectable, ViewChild, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { MatTreeNestedDataSource, MatTree } from '@angular/material/tree';
 import { BehaviorSubject } from 'rxjs';
 import { DataService } from '../services/data-service';
 import { MatDialog } from '@angular/material';
 import { AddDialogComponent } from '../dialogs/add-dialog/add-dialog.component';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog/delete-dialog.component';
 import { EditDialogComponent } from '../dialogs/edit-dialog/edit-dialog.component';
-
+import {CdkTree} from '@angular/cdk/tree';
 /**
  * Json node data with nested structure. Each node has a filename and a value or a list of children
  */
@@ -172,7 +172,9 @@ export class FileDatabase {
 
   }
   updateItem(node: FileNode) {
+    // node.input_type = node.input_type;
     node = node;
+    console.log(this.data)
     this.dataChange.next(this.data);
   }
   public findParent(id: number, node: any): any {
@@ -209,7 +211,7 @@ export class FileDatabase {
   styleUrls: ['./tree-nested.component.css']
 })
 export class TreeNestedComponent implements OnInit{
-  @ViewChild('treeSelector') tree: any;
+  @ViewChild('treeSelector') tree: MatTree<any>;
   @ViewChild('treeSelector2') tree2: any;
 
   nestedTreeControl: NestedTreeControl<FileNode>;
@@ -223,7 +225,8 @@ export class TreeNestedComponent implements OnInit{
 treeData:FileNode[] = [];
 
   constructor(public database: FileDatabase,public dialog: MatDialog,
-    public dataService: DataService) {
+    public dataService: DataService,
+    private changeDetectorRefs: ChangeDetectorRef) {
     this.nestedTreeControl = new NestedTreeControl<FileNode>(this._getChildren);
     this.nestedDataSource = new MatTreeNestedDataSource();
     this.nestedTreeControl2 = new NestedTreeControl<FileNode>(this._getChildren);
@@ -290,6 +293,7 @@ treeData:FileNode[] = [];
     this.database.updateItem(this.dataService.getDialogData()) 
     this.renderChanges();
     this.getTree(); 
+    // this.tree.renderNodeChanges(this.nestedDataSource.data);
     }})
   }
 
@@ -297,6 +301,7 @@ treeData:FileNode[] = [];
     let data = this.nestedDataSource.data;
     this.nestedDataSource.data = null;
     this.nestedDataSource.data = data;
+    // this.changeDetectorRefs.detectChanges();
 
   }
 
