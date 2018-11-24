@@ -11,6 +11,7 @@ export class AppComponent {
     {
       id: 0,
       input_type: "Assets",
+      item_type: "checkbox",
       level: 0,
       filename: "Location",
       parentId: null,
@@ -25,6 +26,7 @@ export class AppComponent {
         level: 1, 
         parentId: 0, 
         id: 1.1,
+        item_type: "checkbox",
         input_type: "checkbox",
         code: "checkbox",
         desc: "aditya",
